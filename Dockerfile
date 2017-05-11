@@ -131,9 +131,6 @@ RUN  mkdir -p -m 0755 /usr/share/snmp/mibs              &&  \
 
 ADD nagios/nagios.cfg /opt/nagios/etc/nagios.cfg
 ADD nagios/cgi.cfg /opt/nagios/etc/cgi.cfg
-ADD nagios/templates.cfg /opt/nagios/etc/objects/templates.cfg
-ADD nagios/commands.cfg /opt/nagios/etc/objects/commands.cfg
-ADD nagios/localhost.cfg /opt/nagios/etc/objects/localhost.cfg
 
 RUN echo "use_timezone=${NAGIOS_TIMEZONE}" >> /opt/nagios/etc/nagios.cfg
 
