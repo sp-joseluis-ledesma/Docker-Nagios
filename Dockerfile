@@ -141,7 +141,8 @@ RUN mkdir -p /orig/var && mkdir -p /orig/etc        &&  \
   cp -Rp /opt/nagios/etc/* /orig/etc/
 
 ADD start.sh /usr/local/bin/start_nagios
-RUN chmod +x /usr/local/bin/start_nagios
+ADD reload.sh /usr/local/bin/reload_nagios
+RUN chmod +x /usr/local/bin/start_nagios /usr/local/bin/reload_nagios
 
 EXPOSE 80
 
