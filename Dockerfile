@@ -13,7 +13,7 @@ ENV NAGIOSADMIN_USER        nagiosadmin
 ENV NAGIOSADMIN_PASS        nagios
 ENV APACHE_RUN_USER         nagios
 ENV APACHE_RUN_GROUP        nagios
-ENV NAGIOS_TIMEZONE         CET
+ENV NAGIOS_TIMEZONE         Europe/Madrid
 ENV DEBIAN_FRONTEND         noninteractive
 ENV NG_NAGIOS_CONFIG_FILE   ${NAGIOS_HOME}/etc/nagios.cfg
 ENV NG_CGI_DIR              ${NAGIOS_HOME}/sbin
@@ -133,6 +133,7 @@ ADD nagios/nagios.cfg /opt/nagios/etc/nagios.cfg
 ADD nagios/cgi.cfg /opt/nagios/etc/cgi.cfg
 
 RUN echo "use_timezone=${NAGIOS_TIMEZONE}" >> /opt/nagios/etc/nagios.cfg
+RUN echo "${NAGIOS_TIMEZONE}" > /etc/timezone
 
 # Copy example config in-case the user has started with empty var or etc
 
