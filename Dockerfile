@@ -51,6 +51,7 @@ RUN  sed -i 's/universe/universe multiverse/' /etc/apt/sources.list  && \
     libnet-snmp-perl          \
     libnet-xmpp-perl          \
     parallel            \
+    tzdata                    \
     libcache-memcached-perl          \
     libdbd-mysql-perl          \
     libdbi-perl            \
@@ -134,6 +135,7 @@ ADD nagios/cgi.cfg /opt/nagios/etc/cgi.cfg
 
 RUN echo "use_timezone=${NAGIOS_TIMEZONE}" >> /opt/nagios/etc/nagios.cfg
 RUN echo "${NAGIOS_TIMEZONE}" > /etc/timezone
+RUN ln -sf /usr/share/zoneinfo/Europe/Madrid /etc/localtime
 
 # Copy example config in-case the user has started with empty var or etc
 
