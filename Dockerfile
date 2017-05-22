@@ -22,43 +22,44 @@ ENV NG_CGI_URL              /cgi-bin
 
 
 RUN  sed -i 's/universe/universe multiverse/' /etc/apt/sources.list  && \
-  apt-get update && apt-get install -y        \
-    iputils-ping            \
-    netcat              \
-    dnsutils            \
-    build-essential            \
-    automake            \
-    autoconf            \
-    gettext              \
-    m4              \
-    gperf              \
-    snmp              \
-    snmpd              \
-    snmp-mibs-downloader          \
+  apt-get update && apt-get install -y \
+    iputils-ping              \
+    netcat                    \
+    dnsutils                  \
+    build-essential           \
+    automake                  \
+    autoconf                  \
+    gettext                   \
+    m4                        \
+    gperf                     \
+    snmp                      \
+    snmpd                     \
+    snmp-mibs-downloader      \
     libgd2-xpm-dev            \
-    unzip              \
-    bc              \
-    bsd-mailx            \
+    unzip                     \
+    bc                        \
+    bsd-mailx                 \
     libnet-snmp-perl          \
-    git              \
-    libssl-dev            \
+    git                       \
+    libssl-dev                \
     libcgi-pm-perl            \
-    librrds-perl            \
+    librrds-perl              \
     libgd-gd2-perl            \
-    libnagios-object-perl          \
-    fping              \
-    libfreeradius-client-dev        \
+    libnagios-object-perl     \
+    fping                     \
+    libfreeradius-client-dev  \
     libnet-snmp-perl          \
     libnet-xmpp-perl          \
-    parallel            \
+    parallel                  \
+    python                    \
     tzdata                    \
-    libcache-memcached-perl          \
-    libdbd-mysql-perl          \
-    libdbi-perl            \
+    libcache-memcached-perl   \
+    libdbd-mysql-perl         \
+    libdbi-perl               \
     libnet-tftp-perl          \
-    libredis-perl            \
+    libredis-perl             \
     libswitch-perl            \
-    libwww-perl              \
+    libwww-perl               \
     libjson-perl          &&  \
     apt-get clean
 
