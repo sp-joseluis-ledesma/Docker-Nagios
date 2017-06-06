@@ -21,11 +21,6 @@ ENV NG_WWW_DIR              ${NAGIOS_HOME}/share/nagiosgraph
 ENV NG_CGI_URL              /cgi-bin
 
 
-ADD GPG-KEY-pagerduty /tmp            
-RUN apt-key add /tmp/GPG-KEY-pagerduty      
-RUN apt add-repository http://packages.pagerduty.com/pdagent/deb       
-
-
 RUN  sed -i 's/universe/universe multiverse/' /etc/apt/sources.list  && \
   apt-get update && apt-get install -y \
     iputils-ping              \
@@ -66,9 +61,10 @@ RUN  sed -i 's/universe/universe multiverse/' /etc/apt/sources.list  && \
     libredis-perl             \
     libswitch-perl            \
     libwww-perl               \
-    libjson-perl              \
-    pdagent-integrations   && \
+    libjson-perl          &&  \
     apt-get clean
+
+ADD pdagent.tgz /
 
 RUN pip install awscli
 RUN  ( egrep -i "^${NAGIOS_GROUP}"    /etc/group || groupadd -g $NAGIOS_GID $NAGIOS_GROUP    )        &&  \
