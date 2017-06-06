@@ -52,6 +52,7 @@ RUN  sed -i 's/universe/universe multiverse/' /etc/apt/sources.list  && \
     libnet-xmpp-perl          \
     parallel                  \
     python                    \
+    python-pip                \
     tzdata                    \
     libcache-memcached-perl   \
     libdbd-mysql-perl         \
@@ -63,6 +64,7 @@ RUN  sed -i 's/universe/universe multiverse/' /etc/apt/sources.list  && \
     libjson-perl          &&  \
     apt-get clean
 
+RUN pip install awscli
 RUN  ( egrep -i "^${NAGIOS_GROUP}"    /etc/group || groupadd -g $NAGIOS_GID $NAGIOS_GROUP    )        &&  \
   ( egrep -i "^${NAGIOS_CMDGROUP}" /etc/group || groupadd $NAGIOS_CMDGROUP )
 RUN  ( id -u $NAGIOS_USER    || useradd --system -u $NAGIOS_UID -d $NAGIOS_HOME -g $NAGIOS_GROUP    $NAGIOS_USER    )  &&  \
